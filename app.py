@@ -10,7 +10,8 @@ from flask import Flask, flash, g, redirect, render_template, request, session, 
 from werkzeug.security import check_password_hash, generate_password_hash
 
 BASE_DIR = Path(__file__).resolve().parent
-DATABASE = Path(os.environ.get("CASHIER_DB", BASE_DIR / "cashier.sqlite3"))
+default_database = "/tmp/cashier.sqlite3" if os.environ.get("VERCEL") else BASE_DIR / "cashier.sqlite3"
+DATABASE = Path(os.environ.get("CASHIER_DB", default_database))
 app = Flask(__name__)
 app.config.update(
     DATABASE=str(DATABASE),
