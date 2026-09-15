@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تسجيل الدخول | نقطة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-page">
+  <div class="login-decoration decoration-one"></div><div class="login-decoration decoration-two"></div>
+  <main class="login-layout">
+    <section class="login-intro"><div class="brand login-brand"><span class="brand-mark">ن</span><div><strong>نقطة</strong><small>نظام المبيعات الذكي</small></div></div><div class="intro-copy"><span class="intro-kicker">إدارة أسهل، نتائج أفضل</span><h1>كل ما تحتاجه<br><em>في نقطة واحدة.</em></h1><p>نظام بسيط ومرن يساعدك على إدارة مبيعاتك ومخزونك بثقة.</p></div><div class="intro-footer"><span>نظام آمن وموثوق</span><span>© {{ current_year }}</span></div></section>
+    <section class="login-card-wrap"><div class="login-card"><div class="login-card-head"><div class="login-avatar">ز</div><div><p class="eyebrow">مرحبًا بعودتك</p><h2>تسجيل الدخول</h2><p class="muted">أدخل بياناتك للوصول إلى لوحة التحكم</p></div></div>{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}<div class="login-error">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}<form method="post" class="login-form"><label>اسم المستخدم<div class="input-wrap"><span>♙</span><input name="name" value="{{ request.form.get('name', '') }}" placeholder="أدخل اسم المستخدم" autocomplete="username" required></div></label><label>الرمز<div class="input-wrap"><span>⌑</span><input type="password" name="code" placeholder="أدخل الرمز" autocomplete="current-password" required><button type="button" class="show-code" title="إظهار الرمز">◉</button></div></label><div class="login-options"><label class="remember"><input type="checkbox"> <span>تذكرني</span></label><span>دخول آمن</span></div><button class="login-submit" type="submit">دخول إلى النظام <span>←</span></button></form><p class="login-hint">للدخول استخدم الحساب المخصص لك</p></div></section>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
